@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Geoengenharia IA: soluções de terreno para data centers</title>
+<meta name="description" content="Geoengenharia para data centers: seleção de terreno, investigação geotécnica, fundações, hidrologia, aterramento e monitoramento com inteligência artificial.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F4F2ED;--sf:#fff;--ink:#15191F;--mu:#566070;--ln:#DAD6CC;--ac:#0B7A85;--on:#fff;--s1:#D9BE98;--s2:#9A6440;--s3:#8B96A3;--s4:#4A5565;--x1:#15191F;--x2:#fff;--x3:#15191F;--x4:#fff;--ok:#1B8A4B;--wn:#B7791F;--bd:#C2410C;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10141A;--sf:#181E27;--ink:#EEF1F6;--mu:#A3ADBD;--ln:#2B3440;--ac:#4FC3CF;--on:#10141A;--s1:#7A6446;--s2:#7A4F36;--s3:#4F5B6A;--s4:#29303B;--x1:#F2F4F8;--x2:#F2F4F8;--x3:#F2F4F8;--x4:#F2F4F8;--ok:#4ADE80;--wn:#FBBF24;--bd:#FB923C;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#10141A;--sf:#181E27;--ink:#EEF1F6;--mu:#A3ADBD;--ln:#2B3440;--ac:#4FC3CF;--on:#10141A;--s1:#7A6446;--s2:#7A4F36;--s3:#4F5B6A;--s4:#29303B;--x1:#F2F4F8;--x2:#F2F4F8;--x3:#F2F4F8;--x4:#F2F4F8;--ok:#4ADE80;--wn:#FBBF24;--bd:#FB923C;color-scheme:dark}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 "IBM Plex Sans",system-ui,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+h1,h2,h3,.brand,.btn,.tab,summary{font-family:Archivo,system-ui,sans-serif}
+.w{max-width:1080px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--ln)}
+header .w{display:flex;align-items:center;gap:16px;height:58px}
+.brand{font-weight:800;font-size:1.05rem;display:flex;align-items:center;gap:9px;flex:none;color:var(--ink);text-decoration:none}
+.lg{display:grid;gap:2px;width:20px}.lg i{height:5px;border-radius:1px}
+nav{flex:1;display:flex;gap:18px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+nav a{color:var(--mu);text-decoration:none;font-weight:600;font-size:.95rem}nav a:hover{color:var(--ink)}
+#th{flex:none;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--ln);background:var(--sf);color:var(--ink);cursor:pointer}
+main>section{padding:76px 0 12px;border-top:1px solid var(--ln)}
+main>section.hero{padding:44px 0 56px;border:0}
+h1{font-size:clamp(2.2rem,6vw,3.9rem);line-height:1.03;letter-spacing:-.03em;margin:0 0 18px;font-weight:800}
+h2{font-size:clamp(1.6rem,3.6vw,2.3rem);line-height:1.12;letter-spacing:-.02em;margin:0 0 10px;font-weight:800}
+h3{font-size:1.15rem;margin:0 0 4px;font-weight:700}
+p{margin:0 0 14px}.lead{color:var(--mu);max-width:62ch;font-size:1.12rem}.note,small{color:var(--mu);font-size:.9rem}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+.btn{font-weight:700;font-size:1rem;padding:12px 18px;border-radius:8px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;text-decoration:none;display:inline-block}
+.btn.p{background:var(--ac);border-color:var(--ac);color:var(--on)}
+:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.hg{display:grid;gap:32px;align-items:center}@media(min-width:900px){.hg{grid-template-columns:1.05fr .95fr}}
+svg.pf{width:100%;height:auto;display:block;border:1px solid var(--ln);border-radius:12px;background:var(--sf)}
+.band{transform-box:fill-box;transform-origin:top;animation:grow .7s both}
+@keyframes grow{from{transform:scaleY(0)}}
+.pf text{font:500 12px "IBM Plex Mono",monospace}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}.chips span{font:500 .82rem "IBM Plex Mono",monospace;border:1px solid var(--ln);border-radius:99px;padding:4px 11px;color:var(--mu);background:var(--sf)}
+.sv{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-top:22px;border:1px solid var(--ln);border-radius:12px;overflow:hidden;background:var(--sf)}
+.sv div{padding:20px;border:1px solid var(--ln);margin:-.5px}.sv b{font:500 .85rem "IBM Plex Mono",monospace;color:var(--ac)}.sv p{margin:6px 0 0;color:var(--mu);font-size:.98rem}
+.box{background:var(--sf);border:1px solid var(--ln);border-radius:12px;padding:18px}
+.fx{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+label{font-weight:600;font-size:.92rem;display:block;margin-bottom:4px}
+select,input,textarea{width:100%;font:inherit;padding:10px 12px;border-radius:8px;border:1.5px solid var(--ln);background:var(--bg);color:var(--ink)}
+.lab{display:grid;gap:18px;margin-top:22px}@media(min-width:900px){.lab{grid-template-columns:1fr 1fr}}
+.score{font:800 3rem/1 Archivo,sans-serif}.bar{height:10px;border-radius:99px;background:var(--ln);overflow:hidden;margin:10px 0}.bar i{display:block;height:100%;border-radius:99px;transition:width .4s}
+.res h3{margin-top:14px}.res ul{margin:6px 0;padding-left:20px}.res li{margin-bottom:5px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:20px 0 14px}.tab{padding:9px 16px;border-radius:99px;border:1.5px solid var(--ln);background:var(--sf);color:var(--ink);cursor:pointer;font-weight:700}
+.tab[aria-selected=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.big{font:800 2rem/1.1 Archivo,sans-serif}.kv{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-top:14px}.kv small{display:block}
+input[type=range]{padding:0;accent-color:var(--ac)}
+ol.ph{list-style:none;margin:20px 0;padding:0;display:grid;gap:0}
+ol.ph li{display:grid;grid-template-columns:48px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid var(--ln)}ol.ph b{font:500 1.1rem "IBM Plex Mono",monospace;color:var(--ac)}
+.rf{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:20px}.rf div{border-top:3px solid var(--ac);padding-top:8px}.rf p{color:var(--mu);font-size:.98rem}
+footer{margin-top:76px;border-top:1px solid var(--ln);padding:28px 0 44px;color:var(--mu);font-size:.9rem}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div class="w">
+<a class="brand" href="#top" data-go="top"><span class="lg"><i style="background:var(--s1)"></i><i style="background:var(--s2)"></i><i style="background:var(--s3)"></i><i style="background:var(--s4)"></i></span>Geoengenharia IA</a>
+<nav aria-label="Seções"><a href="#sv" data-go="sv">Serviços</a><a href="#av" data-go="av">Pré-avaliação</a><a href="#ap" data-go="ap">Aprenda</a><a href="#me" data-go="me">Método</a><a href="#rf" data-go="rf">Referências</a><a href="#rs" data-go="rs">Resfriamento</a><a href="#nr" data-go="nr">Normas</a><a href="#ct" data-go="ct">Contato</a></nav>
+<button id="th" aria-label="Alternar tema claro e escuro">◐</button>
+</div></header>
+<main id="top">
+
+<section class="hero"><div class="w hg">
+<div>
+<h1>O terreno decide se o data center não para.</h1>
+<p class="lead">Geoengenharia para data centers no Brasil: seleção de terreno, investigação geotécnica, fundações, hidrologia, aterramento e monitoramento com inteligência artificial.</p>
+<div class="row"><a class="btn p" href="#av" data-go="av">Avaliar meu terreno</a><a class="btn" href="#ap" data-go="ap">Aprender os fundamentos</a></div>
+<div class="chips"><span>NBR 6122</span><span>NBR 6484</span><span>NBR 8036</span><span>NBR 11682</span><span>Uptime Tier I a IV</span><span>ISO/IEC 22237</span></div>
+</div>
+<svg class="pf" viewBox="0 0 400 430" role="img" aria-label="Perfil de sondagem sob um data center, com camadas de solo, nível d’água, estacas e sensores">
+<rect x="50" y="26" width="300" height="64" rx="4" fill="var(--sf)" stroke="var(--ink)" stroke-width="2"/>
+<g fill="var(--ink)"><rect x="66" y="40" width="18" height="40"/><rect x="92" y="40" width="18" height="40"/><rect x="118" y="40" width="18" height="40"/><rect x="144" y="40" width="18" height="40"/><rect x="238" y="40" width="18" height="40"/><rect x="264" y="40" width="18" height="40"/><rect x="290" y="40" width="18" height="40"/><rect x="316" y="40" width="18" height="40"/></g>
+<g fill="var(--ac)"><circle cx="75" cy="46" r="2.5"/><circle cx="101" cy="46" r="2.5"/><circle cx="127" cy="46" r="2.5"/><circle cx="247" cy="46" r="2.5"/><circle cx="299" cy="46" r="2.5"/></g>
+<text x="180" y="64" fill="var(--ink)">sala de dados</text>
+<rect class="band" style="animation-delay:.1s" x="0" y="100" width="400" height="56" fill="var(--s1)"/>
+<rect class="band" style="animation-delay:.25s" x="0" y="156" width="400" height="74" fill="var(--s2)"/>
+<rect class="band" style="animation-delay:.4s" x="0" y="230" width="400" height="86" fill="var(--s3)"/>
+<rect class="band" style="animation-delay:.55s" x="0" y="316" width="400" height="94" fill="var(--s4)"/>
+<g style="animation:grow .7s .8s both;transform-box:fill-box;transform-origin:top" stroke="var(--ink)" stroke-width="7"><line x1="90" y1="90" x2="90" y2="340"/><line x1="200" y1="90" x2="200" y2="340"/><line x1="310" y1="90" x2="310" y2="340"/></g>
+<line x1="0" y1="196" x2="400" y2="196" stroke="var(--ac)" stroke-width="2.5" stroke-dasharray="7 5"/>
+<text x="296" y="190" fill="var(--ac)" style="paint-order:stroke;stroke:var(--sf);stroke-width:3px">nível d’água</text>
+<text x="12" y="132" fill="var(--x1)">aterro  N 8</text><text x="12" y="198" fill="var(--x2)">argila mole  N 4</text><text x="12" y="276" fill="var(--x3)">areia compacta  N 22</text><text x="12" y="368" fill="var(--x4)">rocha alterada  N 40+</text>
+<g fill="var(--ac)" stroke="var(--sf)" stroke-width="2"><circle cx="150" cy="245" r="6"/><circle cx="256" cy="215" r="6"/><circle cx="356" cy="140" r="6"/></g>
+<text x="12" y="424" fill="var(--mu)">sensores de recalque e poropressão</text>
+</svg>
+</div></section>
+
+<section id="sv"><div class="w">
+<h2>Serviços de geoengenharia para data centers</h2>
+<p class="lead">Do terreno à operação, para investidores, construtoras e operadoras de colocation e hiperescala.</p>
+<div class="sv">
+<div><b>01</b><h3>Seleção e due diligence de terrenos</h3><p>Geologia, hidrologia, riscos e acesso a energia e fibra comparados entre áreas candidatas, antes da compra.</p></div>
+<div><b>02</b><h3>Investigação geotécnica</h3><p>Sondagens SPT e CPTu, ensaios de campo e de laboratório, programadas conforme as NBR 6484 e NBR 8036.</p></div>
+<div><b>03</b><h3>Fundações e terraplenagem</h3><p>Projeto para cargas pesadas de salas de dados, geradores e chillers (NBR 6122), com controle de recalques e pisos.</p></div>
+<div><b>04</b><h3>Hidrogeologia e água</h3><p>Balanço hídrico, outorga, drenagem, rebaixamento de lençol e estudo de reuso para resfriamento.</p></div>
+<div><b>05</b><h3>Aterramento e solo térmico</h3><p>Resistividade elétrica para malhas de terra e resistividade térmica para cabos e dutos enterrados.</p></div>
+<div><b>06</b><h3>Monitoramento com IA</h3><p>Instrumentação, leitura contínua e modelos preditivos para recalques, poropressão e drenagem na obra e na operação.</p></div>
+</div>
+<div class="row"><a class="btn p" href="#ct" data-go="ct">Solicitar proposta</a></div>
+</div></section>
+
+<section id="av"><div class="w">
+<h2>Pré-avaliação do terreno</h2>
+<p class="lead">Responda sete perguntas e veja o nível de risco geotécnico e o escopo de investigação que costuma ser recomendado.</p>
+<div class="lab">
+<div class="box"><div class="fx" id="fm"></div></div>
+<div class="box res" id="rs" aria-live="polite"></div>
+</div>
+<p class="note" style="margin-top:12px">Indicador didático. Não substitui sondagens, projeto e ART de engenheiro habilitado.</p>
+</div></section>
+
+<section id="ap"><div class="w">
+<h2>Aprenda: conceitos que movem o projeto</h2>
+<p class="lead">Três ideias que todo investidor em data center precisa dominar.</p>
+<div class="tabs" role="tablist" id="tb"></div>
+<div class="box" id="p0"></div>
+<div class="box" id="p1" hidden>
+<div class="fx"><div><label for="it">Carga de TI (MW)</label><input id="it" type="number" min="1" max="500" value="10"></div>
+<div><label for="ta">Tarifa (R$/MWh, valor ilustrativo)</label><input id="ta" type="number" min="1" value="350"></div>
+<div><label for="pu">PUE: <b id="puv" class="mono"></b></label><input id="pu" type="range" min="1.1" max="2" step="0.05" value="1.4"></div></div>
+<p class="note" style="margin-top:12px">PUE é a energia total da instalação dividida pela energia dos equipamentos de TI. Quanto mais perto de 1, mais eficiente.</p>
+<div class="kv" id="pr"></div>
+</div>
+<div class="box" id="p2" hidden>
+<p><b>Ar com chillers.</b> Solução tradicional, limitada em racks de alta densidade.</p>
+<p><b>Free cooling.</b> Usa ar ou água externos mais frios quando o clima permite. As horas disponíveis dependem da região.</p>
+<p><b>Líquida direta no chip.</b> Placas frias sobre processadores e GPUs, indicada para racks de IA com dezenas de kW cada.</p>
+<p><b>Imersão.</b> Servidores em fluido dielétrico. Ainda é uma solução de nicho.</p>
+<p style="margin:0"><b>Efeito no terreno:</b> cada opção muda a carga sobre lajes, a demanda de água e o traçado de tubulações enterradas.</p>
+</div>
+</div></section>
+
+<section id="me"><div class="w">
+<h2>Como trabalhamos</h2>
+<ol class="ph">
+<li><b>01</b><div><h3>Seleção</h3>Triagem de terrenos por risco geológico, hídrico e de infraestrutura. Evita comprar uma área que depois não fecha a conta.</div></li>
+<li><b>02</b><div><h3>Investigação</h3>Sondagens e ensaios dimensionados para o porte do projeto, reduzindo o risco de surpresas na escavação.</div></li>
+<li><b>03</b><div><h3>Projeto</h3>Fundações, terraplenagem, drenagem, aterramento e cota de implantação coordenados com a equipe de projeto.</div></li>
+<li><b>04</b><div><h3>Obra</h3>Controle tecnológico de aterros, estacas e pisos, com instrumentação instalada desde o início.</div></li>
+<li><b>05</b><div><h3>Operação</h3>Monitoramento contínuo com IA para detectar recalques e variações de lençol antes que afetem a disponibilidade.</div></li>
+</ol>
+</div></section>
+
+<section id="rf"><div class="w">
+<h2>O que os grandes data centers ensinam</h2>
+<p class="lead">Referências públicas de mercado e o que cada uma significa para o terreno.</p>
+<div class="rf">
+<div><h3>AWS e Azure: regiões e zonas</h3><p>Hiperescalares organizam a nuvem em regiões com zonas de disponibilidade separadas fisicamente. Para o geotécnico, isso significa avaliar o risco de cada local de forma independente.</p></div>
+<div><h3>Vertiv: energia e refrigeração</h3><p>Fabricantes de infraestrutura crítica mostram como o resfriamento e a energia dominam a engenharia. A água, o solo e o aterramento do terreno sustentam esses sistemas.</p></div>
+<div><h3>Equinix: colocation e interconexão</h3><p>Operadoras de colocation vendem confiabilidade e proximidade. Terreno com risco de inundação ou recalque compromete as duas coisas.</p></div>
+<div><h3>SpaceX e Natick: escala e experimentos</h3><p>A indústria aprende com padronização e iteração rápida, e testa ideias fora do comum. A Microsoft encerrou o experimento Natick, de data centers submersos, em 2024. Computação em órbita segue em fase exploratória.</p></div>
+</div>
+<p class="note" style="margin-top:16px">Marcas citadas pertencem a seus titulares e aparecem apenas como referência de mercado, sem parceria ou vínculo com a Geoengenharia IA.</p>
+</div></section>
+
+<section id="ct"><div class="w">
+<h2>Solicite uma proposta</h2>
+<p class="lead">Conte sobre o projeto. Se você fez a pré-avaliação, o resultado segue junto na mensagem.</p>
+<div class="box" style="max-width:640px;margin-top:18px">
+<div class="fx" style="grid-template-columns:1fr"><div><label for="cn">Nome</label><input id="cn" autocomplete="name"></div>
+<div><label for="cc">Empresa</label><input id="cc" autocomplete="organization"></div>
+<div><label for="ce">E-mail</label><input id="ce" type="email" autocomplete="email"></div>
+<div><label for="cm">Mensagem</label><textarea id="cm" rows="4" placeholder="Localização, potência prevista, prazo e fase do projeto"></textarea></div></div>
+<div class="row"><button class="btn p" id="cs">Abrir e-mail com a solicitação</button></div>
+</div>
+</div></section>
+</main>
+
+<section id="rs"><div class="w">
+<h2>Resfriamento: simulador de dimensionamento</h2>
+<p class="lead">Informe a carga de TI e as condições de projeto. O simulador estima a vazão de ar ou água, o número de unidades com redundância, a energia do resfriamento e o consumo de água.</p>
+<div class="lab">
+<div class="box"><div class="fx" style="grid-template-columns:1fr 1fr">
+<div><label for="rp">Carga de TI (kW)</label><input id="rp" type="number" min="1" value="1000"></div>
+<div><label for="rt">Tecnologia</label><select id="rt"><option value="ar">Ar com CRAH e chillers</option><option value="agua">Água gelada com torre</option><option value="liq">Líquida direta no chip</option></select></div>
+<div><label for="rd">Diferença de temperatura (°C)</label><input id="rd" type="number" min="2" max="20" step="0.5" value="10"></div>
+<div><label for="rc">Capacidade por unidade (kW)</label><input id="rc" type="number" min="10" value="150"></div>
+<div><label for="rr">Redundância</label><select id="rr"><option value="0">N (sem redundância)</option><option value="1" selected>N+1</option><option value="2">2N</option></select></div>
+<div><label for="rk">COP do chiller</label><input id="rk" type="number" min="1" max="10" step="0.1" value="5"></div>
+<div><label for="re">Fração de calor rejeitada por evaporação</label><input id="re" type="number" min="0" max="1" step="0.05" value="0.7"></div>
+</div></div>
+<div class="box res" id="rsOut" aria-live="polite"></div>
+</div>
+<p class="note" style="margin-top:12px">Cálculo preliminar. Use ΔT de 10 a 12 °C para ar e de 5 a 7 °C para água gelada. Valores finais dependem de fabricante, clima local e projeto de engenheiro habilitado.</p>
+</div></section>
+
+<section id="nr"><div class="w">
+<h2>Normas técnicas para data center</h2>
+<p class="lead">Principais normas brasileiras e internacionais para projeto, construção e operação, com um guia de referência em PDF.</p>
+<div class="row" style="margin-top:4px"><a class="btn p" href="normas-data-center.pdf" download>Baixar guia de normas (PDF)</a><a class="btn" href="https://www.abntcatalogo.com.br" target="_blank" rel="noopener">Comprar as normas na ABNT</a></div>
+<div class="fx" style="margin-top:22px">
+<div class="box"><h3>Brasileiras e obrigatórias</h3><ul class="mono" style="font-size:.92rem;line-height:1.9;padding-left:18px;margin:6px 0 0"><li>NBR 5410: instalações elétricas de baixa tensão</li><li>NBR 5419: proteção contra descargas atmosféricas</li><li>NBR 6122: projeto de fundações</li><li>NBR 6484 e 8036: sondagens</li><li>NBR 11682: estabilidade de encostas</li><li>NBR 16401: ar-condicionado central</li><li>NR-10 e NR-18: segurança</li></ul></div>
+<div class="box"><h3>Internacionais</h3><ul class="mono" style="font-size:.92rem;line-height:1.9;padding-left:18px;margin:6px 0 0"><li>ANSI/TIA-942: infraestrutura e Tiers</li><li>ISO/IEC 22237: série para data centers</li><li>EN 50600: disponibilidade e eficiência</li><li>ASHRAE 90.4: eficiência energética</li><li>ASHRAE TC 9.9: faixas de temperatura</li></ul></div>
+</div>
+<p class="note" style="margin-top:14px">O PDF é um resumo orientativo com palavras próprias. As normas são protegidas por direitos autorais e devem ser adquiridas nos organismos emissores.</p>
+</div></section>
+
+<footer><div class="w">
+<p>Site criado por <b>Guilherme Morais Nascimento</b>, <a href="mailto:guilhermenascimento867@gmail.com">guilhermenascimento867@gmail.com</a>.</p>
+<p><b>geoengenharia-ia.com.br</b>. Conteúdo técnico educativo. Projetos exigem estudos de campo e responsabilidade técnica (ART) de profissional habilitado no CREA.</p>
+</div></footer>
+
+<script>
+const $=s=>document.querySelector(s);
+const CONTATO="guilhermenascimento867@gmail.com";
+const nf=(n,d=1)=>n.toLocaleString("pt-BR",{minimumFractionDigits:d,maximumFractionDigits:d});
+
+/* Pré-avaliação */
+const FA=[
+["Potência de TI prevista",["Até 5 MW","5 a 20 MW","20 a 100 MW","Acima de 100 MW"],[0,0,0,0]],
+["Nível de disponibilidade alvo",["Tier II","Tier III","Tier IV"],[0,0,0]],
+["Solo e subsolo",["Rocha ou solo residual compacto","Areia ou silte compactos","Argila rija","Argila mole ou aterro","Ainda não sei"],[0,1,2,3,2]],
+["Lençol freático",["Profundo (mais de 10 m)","Médio (3 a 10 m)","Raso (menos de 3 m)","Ainda não sei"],[0,1,3,2]],
+["Relevo e inundação",["Plano e seco","Próximo a rio ou córrego","Encosta ou talude","Área inundável"],[0,2,3,4]],
+["Refrigeração prevista",["Ar com chillers","Água com torres de resfriamento","Líquida direta no chip"],[0,2,1]],
+["Distância à subestação e à fibra",["Menos de 2 km","2 a 10 km","Mais de 10 km"],[0,1,2]]];
+const NT={
+2:[3,"Solo mole ou aterro: risco de recalques diferenciais sob cargas pesadas.","SPT, CPTu e ensaios de adensamento; avaliar fundações profundas."],
+"2b":[2,"Argila rija exige verificar recalques por adensamento.","SPT e ensaios de compressibilidade em laboratório."],
+"2c":[4,"Subsolo desconhecido é o maior fator de risco de custo.","Sondagens SPT (NBR 6484) programadas conforme a NBR 8036."],
+3:[2,"Lençol raso ou incerto afeta escavações, subpressão e drenagem.","Poços de monitoramento, ensaios de permeabilidade e projeto de drenagem."],
+"3b":[3,"Lençol raso ou incerto afeta escavações, subpressão e drenagem.","Poços de monitoramento, ensaios de permeabilidade e projeto de drenagem."],
+4:[1,"Proximidade de cursos d’água pede verificação de cheias.","Estudo hidrológico e definição da cota de implantação."],
+"4b":[2,"Encosta: a estabilidade de taludes condiciona o projeto.","Análise de estabilidade (NBR 11682) e plano de drenagem."],
+"4c":[3,"Área inundável compromete a continuidade operacional.","Estudo hidrológico detalhado e avaliação de descarte do terreno."],
+5:[1,"Resfriamento a água depende de disponibilidade hídrica e licença.","Balanço hídrico, outorga (Lei 9.433/1997) e estudo de reuso."],
+"5b":[2,"Refrigeração líquida concentra cargas e tubulações no piso técnico.","Verificação de lajes e pisos para cargas concentradas."],
+6:[2,"Distância à subestação e à fibra encarece dutos e cabos.","Estudo de traçado e ensaios de resistividade térmica do solo."]};
+$("#fm").innerHTML=FA.map((f,i)=>'<div><label for="f'+i+'">'+f[0]+'</label><select id="f'+i+'">'+f[1].map((o,j)=>'<option value="'+j+'">'+o+"</option>").join("")+"</select></div>").join("");
+let SUM="";
+function avalia(){
+const v=FA.map((f,i)=>+$("#f"+i).value);
+const sum=FA.reduce((a,f,i)=>a+f[2][v[i]],0),sc=100-sum*5;
+const k=[];
+if(v[2]===3)k.push(NT[2]);if(v[2]===2)k.push(NT["2b"]);if(v[2]===4)k.push(NT["2c"]);
+if(v[3]===2)k.push(NT[3]);if(v[3]===3)k.push(NT["3b"]);
+if(v[4]===1)k.push(NT[4]);if(v[4]===2)k.push(NT["4b"]);if(v[4]===3)k.push(NT["4c"]);
+if(v[5]===1)k.push(NT[5]);if(v[5]===2)k.push(NT["5b"]);
+if(v[6]===2)k.push(NT[6]);
+k.sort((a,b)=>b[0]-a[0]);
+const esc=["Projeto de fundações conforme a NBR 6122.","Resistividade elétrica do solo para a malha de aterramento."];
+if(v[0]>=2||v[1]===2)esc.push("Verificação de cargas de geradores e chillers e instrumentação de recalques.");
+k.forEach(x=>{if(!esc.includes(x[2]))esc.unshift(x[2])});
+const lb=sc>=80?["Favorável",1]:sc>=60?["Viável com condicionantes",2]:["Exige estudo aprofundado",3];
+const col=["","var(--ok)","var(--wn)","var(--bd)"][lb[1]];
+$("#rs").innerHTML='<div class="score" style="color:'+col+'">'+sc+'</div><b>'+lb[0]+'</b><div class="bar"><i style="width:'+sc+'%;background:'+col+'"></i></div>'
++'<h3>Pontos de atenção</h3><ul>'+(k.length?k.map(x=>"<li>"+x[1]+"</li>").join(""):"<li>Nenhum ponto crítico nas respostas.</li>")+"</ul>"
++'<h3>Escopo sugerido</h3><ul>'+esc.map(x=>"<li>"+x+"</li>").join("")+'</ul><div class="row" style="margin-top:14px"><a class="btn p" href="#ct" data-go="ct">Pedir proposta com este resultado</a></div>';
+SUM="Pré-avaliação do terreno: "+sc+" ("+lb[0]+")\n"+FA.map((f,i)=>f[0]+": "+f[1][v[i]]).join("\n")+"\nEscopo sugerido: "+esc.join(" ")}
+FA.forEach((f,i)=>$("#f"+i).onchange=avalia);avalia();
+
+/* Aprenda */
+const TI=[["I","99,671%","28,8 h","Capacidade básica, sem redundância."],["II","99,741%","22 h","Componentes redundantes, mas com caminho único de distribuição."],["III","99,982%","1,6 h","Qualquer componente pode sofrer manutenção sem parar a operação."],["IV","99,995%","0,8 h","Tolerante a falhas, com caminhos independentes e redundância total."]];
+let ti=2,tab=0;
+function tiers(){$("#p0").innerHTML='<div class="row" style="margin:0 0 14px">'+TI.map((t,i)=>'<button class="tab" aria-selected="'+(i===ti)+'" data-t="'+i+'">Tier '+t[0]+"</button>").join("")+'</div><div class="big">'+TI[ti][1]+'</div><p>'+TI[ti][3]+'</p><div class="kv"><div><small>Parada máxima por ano</small><b class="mono">'+TI[ti][2]+'</b></div></div><p class="note" style="margin-top:12px">Valores de referência da classificação do Uptime Institute. Inundação, recalque e falha de drenagem derrubam qualquer Tier se o terreno não for tratado.</p>'}
+$("#p0").onclick=e=>{const b=e.target.closest("[data-t]");if(b){ti=+b.dataset.t;tiers()}};tiers();
+const TB=["Tiers","PUE","Resfriamento"];
+function tabs(){$("#tb").innerHTML=TB.map((t,i)=>'<button class="tab" role="tab" aria-selected="'+(i===tab)+'" data-i="'+i+'">'+t+"</button>").join("");TB.forEach((t,i)=>$("#p"+i).hidden=i!==tab)}
+$("#tb").onclick=e=>{const b=e.target.closest("[data-i]");if(b){tab=+b.dataset.i;tabs()}};tabs();
+function pue(){const it=+$("#it").value||0,t=+$("#ta").value||0,p=+$("#pu").value,tot=it*p,en=tot*8760,cu=en*t/1e6,eco=Math.max(0,(1.5-p)*it*8760*t/1e6);
+$("#puv").textContent=nf(p,2);
+$("#pr").innerHTML=[["Potência total",nf(tot)+" MW"],["Sobrecarga (não é TI)",nf(tot-it)+" MW"],["Energia por ano",nf(en/1000,1)+" GWh"],["Custo de energia por ano","R$ "+nf(cu)+" mi"],["Economia vs. PUE 1,50",eco?"R$ "+nf(eco)+" mi por ano":"Sem economia"]].map(x=>"<div><small>"+x[0]+'</small><b class="mono">'+x[1]+"</b></div>").join("")}
+["#it","#ta","#pu"].forEach(s=>$(s).oninput=pue);pue();
+
+/* Resfriamento */
+function resf(){
+const P=+$("#rp").value||0,t=$("#rt").value,dT=+$("#rd").value||10,cap=+$("#rc").value||1,red=+$("#rr").value,cop=+$("#rk").value||5,ev=+$("#re").value;
+const base=Math.ceil(P/cap),n=red===2?base*2:base+red;
+let vaz="",cal="";
+if(t==="ar"){const m3s=P/(1.2*1.006*dT);vaz=nf(m3s*3600,0)+" m³/h de ar ("+nf(m3s,1)+" m³/s)";}
+else{const m3h=P*3.6/(4.18*dT);vaz=nf(m3h,1)+" m³/h de água";}
+const pot=P/cop;
+const agua=t==="agua"?P*3600/2442*ev:0;
+const anual=agua*8760/1000;
+$("#rsOut").innerHTML='<h3>Resultado</h3><div class="kv">'
++'<div><small>Calor a rejeitar</small><b class="mono">'+nf(P,0)+' kW</b></div>'
++'<div><small>Unidades instaladas ('+["N","N+1","2N"][red]+')</small><b class="mono">'+n+'</b></div>'
++'<div><small>Unidades mínimas (N)</small><b class="mono">'+base+'</b></div></div>'
++'<h3>Vazão necessária</h3><p class="mono" style="margin:4px 0">'+vaz+'</p>'
++'<h3>Energia do resfriamento</h3><p class="mono" style="margin:4px 0">'+nf(pot,0)+' kW elétricos (COP '+nf(cop,1)+')</p>'
++(t==="agua"?'<h3>Consumo de água por evaporação</h3><p class="mono" style="margin:4px 0">'+nf(agua,0)+' L/h, cerca de '+nf(anual,0)+' m³ por ano</p>':'')
++'<p class="note" style="margin-top:12px">Na tecnologia líquida, parte do calor é removida pelo ar. Revise o dimensionamento com o fabricante.</p>'}
+["#rp","#rt","#rd","#rc","#rr","#rk","#re"].forEach(s=>$(s).oninput=resf);resf();
+
+/* Contato */
+$("#cs").onclick=()=>{const b="Nome: "+$("#cn").value+"\nEmpresa: "+$("#cc").value+"\nE-mail: "+$("#ce").value+"\n\n"+$("#cm").value+"\n\n"+SUM;
+location.href="mailto:"+CONTATO+"?subject="+encodeURIComponent("Proposta: geoengenharia para data center")+"&body="+encodeURIComponent(b)};
+
+/* Navegação e tema */
+document.addEventListener("click",e=>{const a=e.target.closest("[data-go]");if(!a)return;e.preventDefault();const t=document.getElementById(a.dataset.go);if(t)t.scrollIntoView({behavior:"smooth"})});
+const R=document.documentElement;
+try{const s=localStorage.getItem("tema");if(s)R.dataset.theme=s}catch(e){}
+$("#th").onclick=()=>{const d=R.dataset.theme?R.dataset.theme==="dark":matchMedia("(prefers-color-scheme:dark)").matches;R.dataset.theme=d?"light":"dark";try{localStorage.setItem("tema",R.dataset.theme)}catch(e){}};
+</script>
+</body>
+</html>
